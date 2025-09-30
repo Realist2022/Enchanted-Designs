@@ -1,0 +1,14 @@
+.imageContentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+ 
+}
+
+.imagePic{
+    width: 30%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 50px;
+}

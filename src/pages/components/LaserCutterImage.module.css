@@ -1,0 +1,35 @@
+.laserCutterImageContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.laserCutterImage {
+  width: 70%;
+  margin-top: 50px;
+
+  /* --- Animation Properties Added Below --- */
+
+  /* 1. Initial state of the image */
+  scale: 0.8;
+  opacity: 0;
+
+  /* 2. Link the animation to the keyframes */
+  animation: fadeIn linear forwards;
+
+  /* 3. Set the animation timeline to the scroll position */
+  animation-timeline: view();
+
+  /* 4. Define the scroll range for the animation */
+  animation-range: 5% 40%;
+}
+
+/* 5. Define the animation's final state */
+@keyframes fadeIn {
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}

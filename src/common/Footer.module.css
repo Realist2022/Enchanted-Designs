@@ -1,0 +1,41 @@
+/* Navbar container */
+.footer {
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  height: 80px;
+  background-color: rgb(249, 235, 221);
+  color: black;
+  font-family: Arial;
+  font-weight: bold;
+  box-sizing: border-box;
+  position: relative;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.scrollButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: plum;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.scrollButton:hover {
+  background-color: purple; 
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 100%;
+}

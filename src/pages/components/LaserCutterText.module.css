@@ -1,0 +1,29 @@
+.LaserCutterText {
+  text-align: center;
+  color: #614b4b;
+  font-family: sans-serif;
+  font-style: italic;
+  margin: 40px;
+}
+
+.LaserCutterTextH3 {
+  font-size: 2rem;
+}
+
+.LaserCutterTextP {
+  font-size: 1.2rem;
+}
+
+.LaserCutterTextButton {
+  background-color: #614b4b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 30px;
+}
+.LaserCutterTextButton:hover {
+  background-color: #7a5c5c;
+}

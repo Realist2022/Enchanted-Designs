@@ -1,0 +1,15 @@
+.textContentUnderImageContainer {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  color: #614b4b;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.contentSubTitle {
+  font-size: 2rem;
+  color: #614b4b;
+  font-family: sans-serif;
+}

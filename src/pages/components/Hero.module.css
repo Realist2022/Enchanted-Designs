@@ -1,0 +1,89 @@
+.heroContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.heroTitle{
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  font-family: "Charm", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.heroSubTitle {
+  font-size: 2.5rem;
+  color: white;
+  font-family: "Charm", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.heroP {
+  font-size: 1.2rem;
+  color: white;
+  margin-left: 20px; 
+  margin-right: 20px;
+  font-family: sans-serif;
+}
+
+.heroButton {
+  background-color: #614b4b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.heroButton:hover {
+  background-color: #4a3a3a;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.heroContent {
+  text-align: center;
+  position: absolute;
+  width: 70%;
+  padding: 20px;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.heroContent {
+  text-align: center;
+  position: absolute;
+  width: 70%;
+  padding: 20px;
+
+  /* --- Animation Properties Added Below --- */
+  animation: fadeOut linear forwards;
+  animation-timeline: view(); 
+  animation-range: exit -200px;
+}
+
+/* --- Keyframes for the Animation --- */
+@keyframes fadeOut {
+  to {
+	opacity: 0;
+  }
+}
