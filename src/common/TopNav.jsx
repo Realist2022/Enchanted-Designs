@@ -5,60 +5,71 @@ const enchantedDesignLogo = '/images/enchantedDesignLogo.jpg';
 const profilePic = '/images/profile.png';
 
 function TopNav({ onLoginClick, onSignUpClick }) {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMobileNav = () => {
-    setIsMobileNavOpen(!isMobileNavOpen);
+    setMobileNavOpen(!isMobileNavOpen);
   };
 
   const handleLoginClick = () => {
+    setMobileNavOpen(false);
     onLoginClick();
-    setIsMobileNavOpen(false);
   };
 
   const handleSignUpClick = () => {
+    setMobileNavOpen(false);
     onSignUpClick();
-    setIsMobileNavOpen(false);
+  };
+  
+  // Logic to hide/show navbar on scroll
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      // If scrolling down, hide the navbar
+      if (window.scrollY > lastScrollY) { 
+        setShowNav(false);
+      } else { // If scrolling up, show the navbar
+        setShowNav(true);
+      }
+      // Remember the new scroll position
+      setLastScrollY(window.scrollY);
+    }
   };
 
-  // --- Effect to close menu on scroll ---
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
+
   useEffect(() => {
     const handleScroll = () => {
-      // If the mobile nav is open, close it
       if (isMobileNavOpen) {
-        setIsMobileNavOpen(false);
+        setMobileNavOpen(false);
       }
     };
-
-    // Add the event listener when the component mounts
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isMobileNavOpen]); // Rerun the effect if isMobileNavOpen changes
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobileNavOpen]);
 
   return (
-    <nav className={styles.navbar}>
-      <img src={enchantedDesignLogo} className={styles.enchantedDesignLogoTopNav} alt="Enchanted Design Logo" />
+    <div className={`${styles.navbar} ${showNav ? styles.navVisible : styles.navHidden}`}>
+      <div className={styles.navLeft}>
+        <img src={enchantedDesignLogo} className={styles.enchantedDesignLogoTopNav} alt="Logo" />
+      </div>
 
-      {/* --- Hamburger Menu Icon --- */}
-      <button className={styles.hamburger} onClick={toggleMobileNav} aria-label="Toggle navigation">
-        <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
-      </button>
-
-      {/* --- Navigation Links --- */}
-      <div className={`${styles.navLinks} ${isMobileNavOpen ? styles.mobileNavOpen : ''}`}>
+      <div className={`${styles.navLinks} ${isMobileNavOpen ? styles.mobileNavOpen : ""}`}>
         <a href="#home">Home</a>
-        <a href="#news">News</a>
-                {/* DROPDOWN */}
-        <div className={styles.dropdown}>
-          <button className={styles.dropbtn}>
-            Dropdown
-          </button>
+        <a href="#about">About</a>
+                <div className={styles.dropdown}>
+          <button className={styles.dropbtn}>Dropdown</button>
           <div className={styles.dropdownContent}>
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
@@ -66,14 +77,21 @@ function TopNav({ onLoginClick, onSignUpClick }) {
           </div>
         </div>
 
-        {/* LOGIN AND SIGNUP */}
         <div className={styles.loginAndSignupNav}>
           <img src={profilePic} className={styles.profilePic} alt="Profile" />
           <button className={styles.loginAndSignupNavButtons} onClick={handleLoginClick}>Login</button>
           <button className={styles.loginAndSignupNavButtons} onClick={handleSignUpClick}>Sign up</button>
         </div>
+
+
       </div>
-    </nav>
+
+      <button className={styles.hamburger} onClick={toggleMobileNav}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </div>
   );
 }
 

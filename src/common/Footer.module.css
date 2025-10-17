@@ -15,16 +15,17 @@
 }
 
 .scrollButton {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 99;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 50px;
   background-color: plum;
   color: white;
   padding: 10px;
   cursor: pointer;
+  border: none;
 }
 
 .scrollButton:hover {
